@@ -142,3 +142,15 @@ Then you could pass this for authorization as
 
     gc = pygsheets.authorize(credentials=mycreds)
 
+Footnotes
+---------
+
+There is an issue with python version 3.5 that will cause authentication to fail. You will see something like the following at the bottom of the stack trace:
+::
+  File "/usr/local/lib/python3.5/dist-packages/httplib2/socks.py", line 178, in __getauthheader
+    return "Proxy-Authorization: Basic " + base64.b64encode(auth)
+  File "/usr/lib/python3.5/base64.py", line 59, in b64encode
+    encoded = binascii.b2a_base64(s)[:-1]
+  TypeError: a bytes-like object is required, not 'str'
+
+You will have to move to another python version. 3.6 is fine.
